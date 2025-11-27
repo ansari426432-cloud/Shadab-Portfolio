@@ -4,27 +4,29 @@
   <meta charset="UTF-8" />
   <title>Mohammad Sadab | Developer Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Mohammad Sadab - Full-Stack Developer" />
+  <meta name="description" content="Portfolio of Mohammad Sadab - Full-Stack Developer (React.js & .NET Core)" />
 
-  <!-- Google Font -->
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #f5f7fb;
-      --bg-soft: #ffffff;
-      --bg-accent: #eef5ff;
-      --text: #0f172a;
+      --bg: #fdfaf7;
+      --bg-alt: #fff7ec;
+      --card-bg: #ffffff;
+      --accent: #ff7b54;   /* coral */
+      --accent-soft: #ffe0d2;
+      --accent-2: #2dd4bf; /* teal */
+      --accent-3: #facc15; /* amber */
+      --text: #111827;
       --muted: #6b7280;
-      --primary: #2563eb;
-      --primary-soft: rgba(37, 99, 235, 0.12);
-      --primary-strong: #1d4ed8;
       --border-subtle: #e5e7eb;
-      --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.08);
-      --radius-lg: 1.25rem;
-      --transition-fast: 150ms ease-out;
+      --radius-xl: 1.6rem;
+      --radius-lg: 1.2rem;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --transition-fast: 140ms ease-out;
       --transition-med: 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
     }
 
@@ -35,10 +37,11 @@
     }
 
     body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background:
-        radial-gradient(circle at 0 0, #e0f2fe 0, transparent 50%),
-        radial-gradient(circle at 100% 0, #e5e7eb 0, transparent 55%),
+        radial-gradient(circle at 0 0, #fef3c7 0, transparent 50%),
+        radial-gradient(circle at 100% 0, #f9a8d4 0, transparent 52%),
+        radial-gradient(circle at 50% 100%, #befae4 0, transparent 52%),
         var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -56,39 +59,40 @@
       display: block;
     }
 
-    /* Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #e5e7eb;
+      background: #f3f4f6;
     }
     ::-webkit-scrollbar-thumb {
-      background: #9ca3af;
+      background: #d1d5db;
       border-radius: 999px;
     }
 
     .page {
-      max-width: 1120px;
+      max-width: 1150px;
       margin: 0 auto;
       padding: 0 1.5rem 3.5rem;
     }
 
-    /* NAVBAR */
+    /* NAVBAR – pill style */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 40;
+      padding: 1rem 0 0.75rem;
       backdrop-filter: blur(18px);
-      background: radial-gradient(circle at 0 0, rgba(191, 219, 254, 0.85), transparent 55%),
-                  rgba(255, 255, 255, 0.92);
-      border-bottom: 1px solid rgba(209, 213, 219, 0.6);
     }
 
     .nav-inner {
-      max-width: 1120px;
+      max-width: 1150px;
       margin: 0 auto;
-      padding: 0.7rem 1.5rem 0.5rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(254, 215, 170, 0.9);
+      box-shadow: 0 14px 35px rgba(249, 115, 22, 0.25);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -98,37 +102,47 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.7rem;
     }
 
     .brand-logo {
       width: 38px;
       height: 38px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #2563eb, #38bdf8);
+      border-radius: 1.1rem;
+      background: conic-gradient(from 140deg, #f97316, #facc15, #22c55e, #14b8a6, #f97316);
+      padding: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .brand-logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
       color: white;
       font-weight: 700;
-      font-size: 0.9rem;
-      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .brand-meta {
       display: flex;
       flex-direction: column;
-      gap: 0.1rem;
+      gap: 0.08rem;
     }
 
     .brand-name {
-      font-weight: 600;
-      letter-spacing: 0.02em;
       font-size: 0.98rem;
+      font-weight: 600;
     }
 
     .brand-tagline {
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       color: var(--muted);
     }
 
@@ -136,30 +150,31 @@
       display: flex;
       align-items: center;
       gap: 1.2rem;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
     }
 
     .nav-links a {
       position: relative;
-      padding: 0.1rem 0;
-      color: var(--muted);
-      transition: color var(--transition-fast);
+      padding: 0.2rem 0;
+      color: #4b5563;
+      transition: color var(--transition-fast), transform var(--transition-fast);
     }
 
     .nav-links a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: -0.3rem;
+      bottom: -0.25rem;
       width: 0;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, #2563eb, #22c55e);
+      background: linear-gradient(90deg, #f97316, #22c55e);
       transition: width var(--transition-med);
     }
 
     .nav-links a:hover {
-      color: var(--text);
+      color: #111827;
+      transform: translateY(-1px);
     }
 
     .nav-links a:hover::after {
@@ -169,29 +184,28 @@
     .nav-cta {
       display: none;
     }
-
     @media (min-width: 768px) {
       .nav-cta {
         display: flex;
       }
     }
 
-    /* BUTTONS - animated */
+    /* BUTTONS – animated gradient based on cursor */
     .btn {
       position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.6rem 1.2rem;
+      gap: 0.35rem;
+      padding: 0.6rem 1.3rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.9), rgba(219, 234, 254, 0.85) 55%),
-                  linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: white;
+      border: 1px solid rgba(248, 113, 113, 0.5);
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), #fef9c3, #fed7aa 55%, #fecaca 100%);
+      color: #111827;
       font-size: 0.82rem;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.45);
+      box-shadow: 0 12px 28px rgba(248, 113, 113, 0.35);
       overflow: hidden;
       transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-fast);
     }
@@ -208,7 +222,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(248, 250, 252, 0.9), transparent 55%);
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 1), transparent 55%);
       opacity: 0;
       transition: opacity var(--transition-fast);
     }
@@ -219,14 +233,14 @@
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 14px 36px rgba(37, 99, 235, 0.5);
-      border-color: rgba(129, 140, 248, 0.9);
+      box-shadow: 0 18px 40px rgba(248, 113, 113, 0.4);
+      border-color: rgba(248, 113, 113, 0.8);
     }
 
     .btn-icon {
       font-size: 1rem;
-      transform: translateX(0);
       transition: transform var(--transition-med);
+      transform: translateX(0);
     }
 
     .btn:hover .btn-icon {
@@ -234,172 +248,273 @@
     }
 
     .btn-outline {
-      background: linear-gradient(135deg, #eff6ff, #e5e7eb);
-      color: #1f2937;
-      box-shadow: 0 10px 24px rgba(148, 163, 184, 0.25);
-      border-color: #d1d5db;
+      background: #ffffff;
+      border-color: rgba(251, 191, 36, 0.7);
+      box-shadow: 0 10px 24px rgba(251, 191, 36, 0.35);
     }
 
-    .btn-outline::before {
-      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.9), transparent 65%);
-    }
-
-    /* HERO */
+    /* MAIN LAYOUT */
     main {
-      margin-top: 1.8rem;
+      margin-top: 2rem;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.5fr);
-      gap: 2rem;
-      margin-bottom: 3rem;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
+      gap: 2.2rem;
       align-items: center;
+      margin-bottom: 3.2rem;
     }
 
-    @media (min-width: 900px) {
+    @media (max-width: 880px) {
       .hero {
-        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
+    /* Left hero – large card */
     .hero-left {
-      padding: 1.7rem 1.8rem;
-      border-radius: 1.6rem;
-      background: linear-gradient(135deg, rgba(239, 246, 255, 0.9), rgba(248, 250, 252, 0.9));
-      border: 1px solid rgba(209, 213, 219, 0.8);
+      padding: 1.8rem 1.8rem 1.7rem;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #fff7ed, #fef9c3);
+      border: 1px solid rgba(248, 171, 95, 0.5);
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(209, 213, 219, 0.9);
-      font-size: 0.74rem;
-      color: var(--muted);
+    .hero-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
       margin-bottom: 0.9rem;
+      font-size: 0.78rem;
     }
 
-    .hero-badge-dot {
+    .hero-tag {
+      padding: 0.18rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(254, 249, 195, 0.9);
+      border: 1px dashed rgba(250, 204, 21, 0.8);
+      color: #78350f;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-tag-dot {
       width: 10px;
       height: 10px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.3);
     }
 
     .hero-title {
-      font-size: clamp(2rem, 3.1vw + 1rem, 2.7rem);
-      font-weight: 800;
+      font-size: clamp(2.1rem, 3.2vw + 1.1rem, 2.8rem);
+      line-height: 1.1;
       letter-spacing: -0.04em;
       margin-bottom: 0.7rem;
+      font-weight: 800;
     }
 
     .hero-title span {
-      background: linear-gradient(120deg, #2563eb, #10b981, #8b5cf6);
+      background: linear-gradient(120deg, #f97316, #22c55e, #14b8a6, #f59e0b);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
     .hero-subtitle {
-      font-size: 0.96rem;
+      font-size: 0.98rem;
       color: #4b5563;
       max-width: 36rem;
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.4rem;
     }
 
-    .hero-meta-row {
+    .hero-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 0.7rem;
-      margin-bottom: 1.3rem;
-      font-size: 0.78rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.8rem;
     }
 
-    .hero-pill {
-      padding: 0.25rem 0.8rem;
+    .hero-meta-pill {
+      padding: 0.3rem 0.9rem;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(209, 213, 219, 0.9);
-      color: var(--muted);
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      background: rgba(255, 255, 255, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: #92400e;
     }
 
     .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.8rem;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
 
     .hero-footnote {
       font-size: 0.78rem;
       color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
+    .hero-footnote-badge {
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(45, 212, 191, 0.16);
+      color: #115e59;
+      border: 1px solid rgba(45, 212, 191, 0.6);
+      font-size: 0.72rem;
+    }
+
+    /* Right hero – stacked cards */
     .hero-right {
-      padding: 1.4rem 1.4rem 1.5rem;
-      border-radius: 1.6rem;
-      background: var(--bg-soft);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .hero-right-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-right-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
+      gap: 0.9rem;
+    }
+
+    .hero-profile-card {
+      border-radius: var(--radius-lg);
+      background: var(--card-bg);
+      border: 1px solid rgba(249, 168, 212, 0.7);
+      box-shadow: var(--shadow-soft);
+      padding: 1rem 1.1rem;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .hero-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 1.4rem;
+      padding: 2px;
+      background: conic-gradient(from 180deg, #f97316, #facc15, #22c55e, #06b6d4, #f97316);
+    }
+
+    .hero-avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(135deg, #020617, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fef3c7;
+      font-size: 1rem;
+      font-weight: 700;
+      flex-direction: column;
+    }
+
+    .hero-avatar-inner span:first-child {
+      letter-spacing: 0.12em;
+    }
+    .hero-avatar-inner span:last-child {
+      font-size: 0.62rem;
+      opacity: 0.85;
+      margin-top: 0.15rem;
+    }
+
+    .hero-profile-meta {
+      font-size: 0.82rem;
+      color: #4b5563;
+    }
+
+    .hero-profile-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #111827;
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-profile-role {
+      margin-bottom: 0.4rem;
+      color: #fb923c;
+      font-weight: 500;
       font-size: 0.8rem;
     }
 
-    .info-card {
-      padding: 0.75rem 0.8rem;
-      border-radius: 1rem;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.04);
-    }
-
-    .info-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.2rem;
-    }
-
-    .info-value {
-      font-weight: 500;
-      color: #111827;
-      margin-bottom: 0.2rem;
-    }
-
-    .info-tags {
+    .hero-profile-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.25rem;
-      margin-top: 0.1rem;
+      gap: 0.3rem;
+      margin-top: 0.25rem;
     }
 
-    .info-tag {
-      padding: 0.1rem 0.45rem;
+    .hero-profile-tag {
+      padding: 0.16rem 0.55rem;
       border-radius: 999px;
-      background: #e5edff;
-      font-size: 0.68rem;
-      color: #1d4ed8;
+      background: #fef3c7;
+      font-size: 0.72rem;
+      color: #78350f;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+      font-size: 0.74rem;
+    }
+
+    .metric-card {
+      padding: 0.6rem 0.5rem;
+      border-radius: 1rem;
+      background: var(--bg-alt);
+      border: 1px solid rgba(252, 211, 77, 0.7);
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.12rem;
+    }
+
+    .metric-label {
+      color: #92400e;
+    }
+
+    .hero-stack-card {
+      border-radius: var(--radius-lg);
+      background: var(--card-bg);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      padding: 0.9rem 1rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.8rem;
+      color: #065f46;
+    }
+
+    .hero-stack-title {
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-stack-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.25rem;
+    }
+
+    .hero-stack-chip {
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(187, 247, 208, 0.7);
+      border: 1px solid rgba(22, 163, 74, 0.5);
+      font-size: 0.72rem;
     }
 
     /* SECTION HEADERS */
@@ -409,62 +524,38 @@
 
     .section-header {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 1rem;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
     }
 
     .section-title {
-      font-size: 1rem;
-      letter-spacing: 0.14em;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #6b7280;
+      color: #9a3412;
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.6rem;
     }
 
     .section-title::before {
       content: "";
-      width: 36px;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(148, 163, 184, 0.1), rgba(148, 163, 184, 0.9));
+      width: 40px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #fdba74, #22c55e);
     }
 
     .section-subtitle {
       font-size: 0.8rem;
       color: var(--muted);
+      max-width: 22rem;
+      text-align: right;
     }
 
     /* SKILLS */
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .pill {
-      padding: 0.35rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: #ffffff;
-      font-size: 0.8rem;
-      color: #111827;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.03);
-    }
-
-    .pill-badge {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #2563eb;
-      box-shadow: 0 0 0 2px rgba(191, 219, 254, 0.9);
-    }
-
     .skill-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -473,26 +564,52 @@
 
     .skill-card {
       border-radius: var(--radius-lg);
-      background: var(--bg-soft);
-      border: 1px solid #e5e7eb;
-      padding: 1rem 1rem 1.05rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      padding: 0.95rem 1rem;
       box-shadow: var(--shadow-soft);
     }
 
     .skill-title {
-      font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.37rem;
+    }
+
+    .pill {
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid #fecaca;
+      background: #fff7ed;
+      font-size: 0.78rem;
+      color: #7c2d12;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .pill-badge {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #fb923c;
+      box-shadow: 0 0 0 2px #fed7aa;
     }
 
     /* EXPERIENCE & PROJECT CARDS */
     .card-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
-      gap: 1rem;
+      gap: 1.1rem;
     }
 
-    @media (min-width: 840px) {
+    @media (min-width: 860px) {
       .card-grid--two {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -500,8 +617,8 @@
 
     .card {
       border-radius: var(--radius-lg);
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
       padding: 1rem 1.05rem 1.1rem;
       box-shadow: var(--shadow-soft);
       transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-fast);
@@ -509,15 +626,15 @@
 
     .card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 18px 40px rgba(148, 163, 184, 0.5);
-      border-color: rgba(129, 140, 248, 0.9);
+      box-shadow: 0 22px 50px rgba(249, 115, 22, 0.25);
+      border-color: rgba(249, 168, 212, 0.9);
     }
 
     .card-header-row {
       display: flex;
       justify-content: space-between;
       gap: 0.9rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
 
     .card-title {
@@ -526,23 +643,24 @@
     }
 
     .card-subtitle {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--muted);
+      margin-top: 0.1rem;
     }
 
     .card-tag {
-      font-size: 0.72rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      background: #eff6ff;
-      color: #1d4ed8;
-      border: 1px solid #bfdbfe;
       align-self: flex-start;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid #fdba74;
+      font-size: 0.72rem;
+      color: #9a3412;
     }
 
     .card-body {
       font-size: 0.83rem;
-      color: #1f2937;
+      color: #374151;
     }
 
     .card-body ul {
@@ -552,31 +670,33 @@
 
     .card-body li {
       display: flex;
-      gap: 0.4rem;
-      margin-bottom: 0.25rem;
+      gap: 0.35rem;
+      margin-bottom: 0.3rem;
     }
 
     .card-bullet {
-      font-size: 0.9rem;
-      color: var(--primary);
+      font-size: 0.85rem;
+      color: #f97316;
       margin-top: 0.08rem;
     }
 
     .card-footer {
+      margin-top: 0.65rem;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-top: 0.6rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
       font-size: 0.78rem;
       color: var(--muted);
     }
 
     .card-link {
-      font-size: 0.78rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.2rem;
-      color: var(--primary-strong);
+      gap: 0.18rem;
+      color: #ea580c;
+      font-weight: 500;
     }
 
     .card-link:hover {
@@ -586,24 +706,81 @@
     /* CONTACT */
     .contact-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
       gap: 1.1rem;
     }
 
-    @media (min-width: 880px) {
+    @media (max-width: 880px) {
       .contact-layout {
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
     .contact-form-card {
       border-radius: var(--radius-lg);
       background: #ffffff;
-      border: 1px solid #e5e7eb;
+      border: 1px solid var(--border-subtle);
       padding: 1.1rem 1.1rem 1.2rem;
       box-shadow: var(--shadow-soft);
     }
 
+    .contact-side {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #fee2e2, #ffedd5);
+      border: 1px solid rgba(248, 171, 95, 0.8);
+      padding: 1.1rem 1.1rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.84rem;
+    }
+
+    .contact-intro {
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.7rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed rgba(248, 171, 95, 0.8);
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      color: #92400e;
+    }
+
+    .contact-value {
+      font-size: 0.8rem;
+      text-align: right;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.7rem;
+    }
+
+    .chip-link {
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(251, 191, 36, 0.9);
+      box-shadow: 0 12px 26px rgba(248, 171, 95, 0.35);
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: #9a3412;
+    }
+
+    /* FLOATING INPUTS */
     .field {
       position: relative;
       margin-bottom: 0.9rem;
@@ -613,9 +790,9 @@
     .field textarea {
       width: 100%;
       padding: 0.95rem 0.95rem 0.45rem;
-      border-radius: 0.9rem;
-      border: 1px solid #d1d5db;
-      background: #f9fafb;
+      border-radius: 1rem;
+      border: 1px solid #fecaca;
+      background: #fff7ed;
       color: var(--text);
       outline: none;
       font-size: 0.84rem;
@@ -625,14 +802,14 @@
     .field textarea {
       resize: vertical;
       min-height: 90px;
-      max-height: 200px;
+      max-height: 220px;
     }
 
     .field input:focus,
     .field textarea:focus {
-      border-color: var(--primary);
+      border-color: #fb923c;
       background: #ffffff;
-      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.6), 0 13px 28px rgba(37, 99, 235, 0.22);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.4), 0 16px 30px rgba(249, 115, 22, 0.3);
       transform: translateY(-1px);
     }
 
@@ -650,68 +827,17 @@
     .field textarea:focus + .field-label,
     .field input:not(:placeholder-shown) + .field-label,
     .field textarea:not(:placeholder-shown) + .field-label {
-      top: 0.45rem;
+      top: 0.42rem;
       font-size: 0.68rem;
       transform: translateY(-4px);
-      color: var(--primary);
-    }
-
-    .contact-side {
-      border-radius: var(--radius-lg);
-      background: var(--bg-accent);
-      border: 1px solid #bfdbfe;
-      padding: 1.1rem 1.1rem 1.2rem;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.84rem;
-    }
-
-    .contact-list {
-      list-style: none;
-      margin-top: 0.5rem;
-    }
-
-    .contact-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.7rem;
-      padding: 0.45rem 0;
-      border-bottom: 1px dashed rgba(148, 163, 184, 0.5);
-    }
-
-    .contact-label {
-      font-size: 0.76rem;
-      color: var(--muted);
-    }
-
-    .contact-value {
-      font-size: 0.8rem;
-      text-align: right;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-top: 0.7rem;
-    }
-
-    .chip-link {
-      font-size: 0.78rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      background: #ffffff;
-      border: 1px solid #d1d5db;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      box-shadow: 0 10px 20px rgba(148, 163, 184, 0.25);
+      color: #ea580c;
     }
 
     /* FOOTER */
     footer {
-      margin-top: 2.6rem;
+      margin-top: 2.7rem;
       padding-top: 1.2rem;
-      border-top: 1px dashed rgba(148, 163, 184, 0.7);
+      border-top: 1px dashed rgba(248, 171, 95, 0.8);
       font-size: 0.78rem;
       color: var(--muted);
       display: flex;
@@ -724,24 +850,24 @@
     /* BACK TO TOP */
     .back-to-top {
       position: fixed;
-      right: 1.2rem;
-      bottom: 1.4rem;
+      right: 1.3rem;
+      bottom: 1.5rem;
       width: 40px;
       height: 40px;
       border-radius: 999px;
-      border: 1px solid #d1d5db;
+      border: 1px solid rgba(248, 171, 95, 0.9);
       background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       cursor: pointer;
       opacity: 0;
       pointer-events: none;
       transform: translateY(10px);
       transition: opacity var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
-      z-index: 30;
-      box-shadow: 0 10px 22px rgba(148, 163, 184, 0.35);
+      box-shadow: 0 12px 24px rgba(249, 115, 22, 0.35);
+      z-index: 40;
     }
 
     .back-to-top.visible {
@@ -751,17 +877,16 @@
     }
 
     .back-to-top:hover {
-      border-color: var(--primary);
-      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.4);
+      border-color: #fb923c;
+      box-shadow: 0 18px 36px rgba(249, 115, 22, 0.45);
     }
 
     /* REVEAL ANIMATION */
     .reveal {
       opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 360ms ease-out, transform 360ms ease-out;
+      transform: translateY(16px);
+      transition: opacity 380ms ease-out, transform 380ms ease-out;
     }
-
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
@@ -769,7 +894,7 @@
 
     @media (max-width: 640px) {
       .nav-inner {
-        padding-inline: 1rem;
+        padding-inline: 0.9rem;
       }
       .nav-links {
         display: none;
@@ -778,7 +903,8 @@
         padding-inline: 1rem;
       }
       .hero-left,
-      .hero-right,
+      .hero-profile-card,
+      .hero-stack-card,
       .skill-card,
       .card,
       .contact-form-card,
@@ -793,12 +919,15 @@
   <header class="navbar">
     <div class="nav-inner">
       <div class="brand">
-        <div class="brand-logo">MS</div>
+        <div class="brand-logo">
+          <div class="brand-logo-inner">MS</div>
+        </div>
         <div class="brand-meta">
           <span class="brand-name">Mohammad Sadab</span>
           <span class="brand-tagline">Full-Stack Developer · React &amp; .NET Core</span>
         </div>
       </div>
+
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
@@ -806,6 +935,7 @@
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
+
       <div class="nav-cta">
         <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
           <span>Hire me <span class="btn-icon">💼</span></span>
@@ -817,30 +947,33 @@
   <div class="page">
     <main>
       <!-- HERO -->
-      <section id="about" class="hero">
+      <section class="hero" id="about">
         <div class="hero-left reveal">
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            <span>Available for full-time &amp; remote roles</span>
+          <div class="hero-tag-row">
+            <span class="hero-tag">
+              <span class="hero-tag-dot"></span>
+              Available for full-time &amp; remote roles
+            </span>
+            <span class="hero-tag">Based in Mau · Uttar Pradesh, India</span>
           </div>
 
           <h1 class="hero-title">
-            I build <span>clean, reliable</span> web applications for real users.
+            I craft <span>bright, reliable</span> web experiences for teams &amp; users.
           </h1>
           <p class="hero-subtitle">
-            I'm a full-stack developer from Uttar Pradesh, India, working with React.js, .NET Core,
-            and MySQL. I enjoy turning complex flows into simple UIs and robust APIs.
+            I'm a full-stack developer working with React.js, .NET Core, SignalR, and MySQL.
+            I enjoy taking complex workflows and turning them into smooth UIs and clean APIs.
           </p>
 
-          <div class="hero-meta-row">
-            <div class="hero-pill">1+ years full-stack experience</div>
-            <div class="hero-pill">React.js · .NET Core · MySQL</div>
-            <div class="hero-pill">Based in Mau · India</div>
+          <div class="hero-meta">
+            <span class="hero-meta-pill">1+ years hands-on full-stack experience</span>
+            <span class="hero-meta-pill">React · .NET Core · MySQL</span>
+            <span class="hero-meta-pill">Healthcare &amp; e-learning projects</span>
           </div>
 
           <div class="hero-cta-row">
             <button class="btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
-              <span>View Projects <span class="btn-icon">🚀</span></span>
+              <span>See my projects <span class="btn-icon">🚀</span></span>
             </button>
             <a href="#" class="btn btn-outline">
               <span>Download CV <span class="btn-icon">⬇️</span></span>
@@ -848,44 +981,65 @@
           </div>
 
           <div class="hero-footnote">
-            Previously contributed to healthcare &amp; e-learning platforms with real-time updates,
-            admin tools, and modern dashboards.
+            <span class="hero-footnote-badge">Recent</span>
+            <span>
+              Building an OPD platform (Doctora) with real-time queues and an e-learning backend (AcademyGo) using
+              .NET Core &amp; MySQL.
+            </span>
           </div>
         </div>
 
         <aside class="hero-right reveal">
-          <div class="hero-right-title">Snapshot</div>
-          <div class="hero-right-grid">
-            <div class="info-card">
-              <div class="info-label">Current</div>
-              <div class="info-value">Full-Stack Developer</div>
-              <div class="info-tags">
-                <span class="info-tag">Cubicle Eight</span>
-                <span class="info-tag">July 2025+</span>
+          <div class="hero-profile-card">
+            <div class="hero-avatar">
+              <div class="hero-avatar-inner">
+                <span>MS</span>
+                <span>Full-Stack</span>
               </div>
             </div>
-            <div class="info-card">
-              <div class="info-label">Core Stack</div>
-              <div class="info-value">React · .NET Core</div>
-              <div class="info-tags">
-                <span class="info-tag">SignalR</span>
-                <span class="info-tag">MySQL</span>
+            <div class="hero-profile-meta">
+              <div class="hero-profile-name">Mohammad Sadab</div>
+              <div class="hero-profile-role">Full-Stack Developer @ Cubicle Eight</div>
+              <p>
+                Working with React.js, .NET Core, and MySQL to ship production features in agile sprints.
+              </p>
+              <div class="hero-profile-tags">
+                <span class="hero-profile-tag">React dashboards</span>
+                <span class="hero-profile-tag">REST APIs</span>
+                <span class="hero-profile-tag">SignalR</span>
               </div>
             </div>
-            <div class="info-card">
-              <div class="info-label">Education</div>
-              <div class="info-value">B.Sc · VBSPU</div>
-              <div class="info-tags">
-                <span class="info-tag">2019 – 2022</span>
-              </div>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <div class="metric-value">2+</div>
+              <div class="metric-label">Major full-stack projects</div>
             </div>
-            <div class="info-card">
-              <div class="info-label">Focus</div>
-              <div class="info-value">Web Apps &amp; APIs</div>
-              <div class="info-tags">
-                <span class="info-tag">Clean UI</span>
-                <span class="info-tag">Performance</span>
-              </div>
+            <div class="metric-card">
+              <div class="metric-value">1 yr</div>
+              <div class="metric-label">Intensive training</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">3+</div>
+              <div class="metric-label">Tech stacks used</div>
+            </div>
+          </div>
+
+          <div class="hero-stack-card">
+            <div class="hero-stack-title">
+              Recent stack
+              <span style="font-size:0.9rem;">✨</span>
+            </div>
+            <p>
+              React for UI, .NET Core &amp; C# for APIs, MySQL for data, plus SignalR for real-time UX and Azure DevOps for delivery.
+            </p>
+            <div class="hero-stack-chips">
+              <span class="hero-stack-chip">React.js</span>
+              <span class="hero-stack-chip">.NET Core</span>
+              <span class="hero-stack-chip">MySQL</span>
+              <span class="hero-stack-chip">SignalR</span>
+              <span class="hero-stack-chip">Azure DevOps</span>
             </div>
           </div>
         </aside>
@@ -894,8 +1048,10 @@
       <!-- SKILLS -->
       <section id="skills" class="reveal">
         <div class="section-header">
-          <h2 class="section-title">Skills &amp; Tools</h2>
-          <p class="section-subtitle">The technologies I use to build end-to-end solutions.</p>
+          <h2 class="section-title">Skills &amp; Stack</h2>
+          <p class="section-subtitle">
+            The tools and technologies I use to design, build, and ship full-stack web products.
+          </p>
         </div>
 
         <div class="skill-grid">
@@ -904,32 +1060,32 @@
             <div class="pill-row">
               <span class="pill"><span class="pill-badge"></span>React.js</span>
               <span class="pill"><span class="pill-badge"></span>JavaScript (ES6+)</span>
-              <span class="pill"><span class="pill-badge"></span>HTML5</span>
-              <span class="pill"><span class="pill-badge"></span>CSS3</span>
+              <span class="pill"><span class="pill-badge"></span>HTML5 &amp; CSS3</span>
               <span class="pill"><span class="pill-badge"></span>Tailwind CSS</span>
               <span class="pill"><span class="pill-badge"></span>Bootstrap</span>
+              <span class="pill"><span class="pill-badge"></span>Responsive layouts</span>
             </div>
           </div>
 
           <div class="skill-card">
             <div class="skill-title">Backend</div>
             <div class="pill-row">
-              <span class="pill"><span class="pill-badge"></span>.NET Core</span>
-              <span class="pill"><span class="pill-badge"></span>C#</span>
+              <span class="pill"><span class="pill-badge"></span>.NET Core (C#)</span>
               <span class="pill"><span class="pill-badge"></span>RESTful APIs</span>
-              <span class="pill"><span class="pill-badge"></span>SignalR (real-time)</span>
               <span class="pill"><span class="pill-badge"></span>Authentication &amp; CRUD</span>
+              <span class="pill"><span class="pill-badge"></span>SignalR (real-time)</span>
+              <span class="pill"><span class="pill-badge"></span>Error handling</span>
             </div>
           </div>
 
           <div class="skill-card">
-            <div class="skill-title">Database &amp; DevOps</div>
+            <div class="skill-title">Database &amp; Tools</div>
             <div class="pill-row">
               <span class="pill"><span class="pill-badge"></span>MySQL</span>
               <span class="pill"><span class="pill-badge"></span>Postman</span>
               <span class="pill"><span class="pill-badge"></span>Azure DevOps</span>
               <span class="pill"><span class="pill-badge"></span>Git &amp; GitHub</span>
-              <span class="pill"><span class="pill-badge"></span>VS Code · Visual Studio</span>
+              <span class="pill"><span class="pill-badge"></span>VS Code &amp; Visual Studio</span>
             </div>
           </div>
         </div>
@@ -939,7 +1095,9 @@
       <section id="experience" class="reveal">
         <div class="section-header">
           <h2 class="section-title">Experience</h2>
-          <p class="section-subtitle">Hands-on work in teams, delivering real features.</p>
+          <p class="section-subtitle">
+            Real-world work in teams: building production features, fixing bugs, and iterating fast.
+          </p>
         </div>
 
         <div class="card-grid">
@@ -953,21 +1111,20 @@
             </div>
             <div class="card-body">
               <p>
-                Building and maintaining web apps using React.js, .NET Core, and MySQL, with a focus on
-                real-time communication and clean UX.
+                Building web applications using React.js, .NET Core, and MySQL with real-time features and clean interfaces.
               </p>
               <ul>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>Develop RESTful APIs and integrate them into responsive React dashboards.</span>
+                  <span>Develop modular REST APIs and connect them to React-based dashboards.</span>
                 </li>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>Implement SignalR-based real-time features to improve system feedback.</span>
+                  <span>Implement SignalR updates to keep doctors, staff, or learners in sync in real time.</span>
                 </li>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>Collaborate using Git, Azure DevOps, and agile sprints.</span>
+                  <span>Work in agile sprints with code reviews, Git workflows, and DevOps practices.</span>
                 </li>
               </ul>
               <div class="card-footer">
@@ -987,24 +1144,24 @@
             </div>
             <div class="card-body">
               <p>
-                One-year intensive program focusing on modern frontend, backend, and DB skills with project-based learning.
+                A 1-year program focused on building complete applications: frontend, backend, and databases.
               </p>
               <ul>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>Built full-stack apps with login, CRUD, and admin panels.</span>
+                  <span>Created full-stack apps with authentication, admin panels, and reporting.</span>
                 </li>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>Applied clean UI patterns using Tailwind and Bootstrap.</span>
+                  <span>Practiced responsive design and performance optimizations in React.</span>
                 </li>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>Used Azure DevOps for tasks, repos, and pipelines.</span>
+                  <span>Used Azure DevOps for tasks, branches, pull requests, and pipelines.</span>
                 </li>
               </ul>
               <div class="card-footer">
-                <span>React · .NET Core · DevOps basics</span>
+                <span>Frontend · Backend · DevOps basics</span>
                 <a href="#" class="card-link">View certificate ↗</a>
               </div>
             </div>
@@ -1016,11 +1173,13 @@
       <section id="projects" class="reveal">
         <div class="section-header">
           <h2 class="section-title">Projects</h2>
-          <p class="section-subtitle">Selected work showing both frontend and backend skills.</p>
+          <p class="section-subtitle">
+            A quick look at the projects where I combined UI, backend logic, and database design.
+          </p>
         </div>
 
         <div class="card-grid card-grid--two">
-          <!-- Doctora -->
+          <!-- Doctora App -->
           <article class="card">
             <div class="card-header-row">
               <div>
@@ -1031,25 +1190,24 @@
             </div>
             <div class="card-body">
               <p>
-                A web platform for outpatient departments (OPD), helping clinics manage patients,
-                doctors, and queues in real-time.
+                An OPD web platform that helps clinics manage patient queues, doctor schedules, and appointments.
               </p>
               <ul>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>Digital OPD workflow with queue tracking, status, and history.</span>
+                  <span>Digitized OPD flows, reducing manual tracking and improving clarity for staff.</span>
                 </li>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>SignalR real-time updates so staff always see live data.</span>
+                  <span>Used SignalR to broadcast live queue changes across dashboards.</span>
                 </li>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>Optimized APIs and DB queries to speed up responses.</span>
+                  <span>Designed REST APIs and MySQL tables for patients, doctors, and appointments.</span>
                 </li>
               </ul>
               <div class="card-footer">
-                <span>Real-time · Role-based access</span>
+                <span>Real-time UX · Role-based access</span>
                 <a href="#" class="card-link">GitHub repo ↗</a>
               </div>
             </div>
@@ -1066,24 +1224,24 @@
             </div>
             <div class="card-body">
               <p>
-                Backend service for an online learning platform with courses, tests, MCQs, and admin workflows.
+                Backend services for an e-learning platform with courses, batches, MCQs, and test management.
               </p>
               <ul>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>REST APIs for courses, batches, tests, and MCQ questions.</span>
+                  <span>Designed APIs for courses, tests, users, and scoring logic.</span>
                 </li>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>Endpoints for test creation, submissions, and scoring.</span>
+                  <span>Created endpoints to generate tests, accept answers, and calculate scores.</span>
                 </li>
                 <li>
                   <span class="card-bullet">▹</span>
-                  <span>Managed through Azure DevOps with boards and pipelines.</span>
+                  <span>Managed development workflow with Azure DevOps boards &amp; pipelines.</span>
                 </li>
               </ul>
               <div class="card-footer">
-                <span>Clean APIs · Modular design</span>
+                <span>Clean architecture · API-first</span>
                 <a href="#" class="card-link">GitHub repo ↗</a>
               </div>
             </div>
@@ -1095,7 +1253,9 @@
       <section id="contact" class="reveal">
         <div class="section-header">
           <h2 class="section-title">Contact</h2>
-          <p class="section-subtitle">Send a quick message or connect via email / LinkedIn.</p>
+          <p class="section-subtitle">
+            Want to collaborate or hire me? Drop a quick message or reach out on email / LinkedIn.
+          </p>
         </div>
 
         <div class="contact-layout">
@@ -1105,14 +1265,17 @@
                 <input type="text" id="name" name="name" placeholder=" " required />
                 <label class="field-label" for="name">Your name</label>
               </div>
+
               <div class="field">
                 <input type="email" id="email" name="email" placeholder=" " required />
                 <label class="field-label" for="email">Email address</label>
               </div>
+
               <div class="field">
                 <input type="text" id="subject" name="subject" placeholder=" " />
                 <label class="field-label" for="subject">Subject (optional)</label>
               </div>
+
               <div class="field">
                 <textarea id="message" name="message" placeholder=" " required></textarea>
                 <label class="field-label" for="message">Your message</label>
@@ -1128,9 +1291,8 @@
           </div>
 
           <aside class="contact-side">
-            <p>
-              I'm open to full-time roles, freelance work, and collaborations where React, .NET Core,
-              and MySQL can make a difference.
+            <p class="contact-intro">
+              I'm open to full-time roles, freelance work, and side projects where React, .NET Core, and MySQL can help ship real products.
             </p>
 
             <ul class="contact-list">
@@ -1160,7 +1322,7 @@
 
     <footer>
       <span>© <span id="year"></span> Mohammad Sadab. All rights reserved.</span>
-      <span>Built with HTML, CSS &amp; JavaScript · GitHub Pages ready</span>
+      <span>Built with HTML, CSS &amp; JavaScript · Ready for GitHub Pages</span>
     </footer>
   </div>
 
@@ -1168,7 +1330,7 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
-    // Animated gradient button hover based on pointer position
+    // Animated button gradient based on cursor
     document.querySelectorAll(".btn").forEach((btn) => {
       btn.addEventListener("pointermove", (e) => {
         const rect = btn.getBoundingClientRect();
@@ -1194,10 +1356,10 @@
     );
     revealEls.forEach((el) => observer.observe(el));
 
-    // Back to top button
+    // Back to top button visibility
     const backToTop = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 280) {
+      if (window.scrollY > 320) {
         backToTop.classList.add("visible");
       } else {
         backToTop.classList.remove("visible");
@@ -1207,12 +1369,12 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // Demo contact form handler
+    // Contact form demo handler
     function handleFormSubmit(e) {
       e.preventDefault();
       const status = document.getElementById("form-status");
       status.textContent =
-        "Thanks for reaching out! This demo form doesn't send yet—connect it to your backend or a service.";
+        "Thanks for your message! This demo form doesn't send yet—connect it to your backend or a service.";
       setTimeout(() => {
         status.textContent = "";
       }, 5000);
