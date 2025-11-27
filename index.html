@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mohammad Sadab | Full-Stack Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Full-Stack Developer Portfolio of Mohammad Sadab - React.js, .NET Core, MySQL, Tailwind CSS" />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-elevated: #0b1020;
+      --bg-soft: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --accent-strong: #0ea5e9;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.6);
+      --radius-xl: 1.5rem;
+      --transition-fast: 180ms ease-out;
+      --transition-med: 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 35%, #020617 60%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f2937;
+      border-radius: 999px;
+    }
+
+    /* Layout */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3.5rem;
+      position: relative;
+    }
+
+    .blur-orbit {
+      position: fixed;
+      inset: -150px;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.12) 0, transparent 45%),
+        radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.15) 0, transparent 55%),
+        radial-gradient(circle at 0% 80%, rgba(129, 140, 248, 0.14) 0, transparent 55%);
+      opacity: 0.8;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.75), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem 0.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: conic-gradient(from 220deg, #38bdf8, #0ea5e9, #6366f1, #38bdf8);
+      padding: 2px;
+      position: relative;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.5);
+    }
+
+    .brand-avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 0%, #1f2937, #020617 65%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      color: #e5e7eb;
+    }
+
+    .brand-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .brand-name {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+    }
+
+    .brand-tagline {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+      color: var(--muted);
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      transition: width var(--transition-med);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .nav-cta {
+        display: flex;
+      }
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.25), transparent 55%),
+                  radial-gradient(circle at 100% 100%, rgba(94, 234, 212, 0.35), transparent 60%),
+                  linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #e5e7eb;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-fast);
+    }
+
+    .btn span {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(248, 250, 252, 0.2), transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+
+    .btn:hover::before {
+      opacity: 1;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px) translateZ(0);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+      border-color: rgba(148, 163, 184, 0.9);
+    }
+
+    .btn-icon {
+      font-size: 1rem;
+      transform: translateX(0);
+      transition: transform var(--transition-med);
+    }
+
+    .btn:hover .btn-icon {
+      transform: translateX(2px);
+    }
+
+    .btn-outline {
+      border-color: rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.95);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.6);
+      border-color: rgba(148, 163, 184, 0.9);
+    }
+
+    /* HERO */
+    main {
+      margin-top: 1.5rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr);
+      gap: 2.25rem;
+      margin: 1.5rem 0 3rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+        align-items: center;
+      }
+    }
+
+    .hero-left {
+      position: relative;
+      padding: 1.9rem 1.9rem 1.8rem;
+      border-radius: 1.75rem;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.3), transparent 55%),
+                  radial-gradient(circle at 100% 0, rgba(59, 130, 246, 0.28), transparent 52%),
+                  linear-gradient(145deg, #020617, #020617 45%, #020617 100%);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      overflow: hidden;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.25rem 0.7rem 0.25rem 0.3rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-pill-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle, rgba(52, 211, 153, 0.9), transparent 55%),
+        radial-gradient(circle at 30% 20%, rgba(34, 197, 235, 0.9), transparent 55%);
+      box-shadow: 0 0 0 4px rgba(34, 197, 235, 0.15);
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 3vw + 1rem, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #38bdf8, #22c55e, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.96rem;
+      color: var(--muted);
+      max-width: 34rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.3rem;
+      font-size: 0.78rem;
+    }
+
+    .meta-pill {
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--muted);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-footnote {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-footnote-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-card {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.25), transparent 60%),
+                  linear-gradient(145deg, #020617, #020617 45%, #020617 100%);
+      padding: 1.4rem 1.5rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-card-dots {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #4b5563;
+    }
+
+    .dot.red { background: #f97373; }
+    .dot.yellow { background: #facc15; }
+    .dot.green { background: #4ade80; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      font-size: 0.78rem;
+    }
+
+    .mini-card {
+      padding: 0.75rem 0.8rem;
+      border-radius: 1rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mini-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.22), transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+
+    .mini-card:hover::after {
+      opacity: 1;
+    }
+
+    .mini-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .mini-value {
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .mini-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-top: 0.3rem;
+    }
+
+    .mini-tag {
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(31, 41, 55, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.66rem;
+      color: var(--muted);
+    }
+
+    .hero-badge-stack {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.68rem;
+    }
+
+    .hero-badge {
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    /* SECTIONS */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.9));
+    }
+
+    .section-subtitle {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* SKILLS */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .pill {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.96);
+      font-size: 0.78rem;
+      color: #d1d5db;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pill-badge {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #38bdf8;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+    }
+
+    /* EXPERIENCE / PROJECT CARDS */
+    .card-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    @media (min-width: 840px) {
+      .card-grid--two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.2), transparent 55%),
+                  linear-gradient(145deg, #020617, #020617 60%, #020617 100%);
+      border: 1px solid var(--border-subtle);
+      padding: 1.1rem 1.1rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-fast);
+    }
+
+    .card:hover {
+      transform: translateY(-3px) translateZ(0);
+      box-shadow: 0 20px 55px rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.8);
+    }
+
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      align-self: flex-start;
+    }
+
+    .card-body {
+      font-size: 0.82rem;
+      color: #d1d5db;
+    }
+
+    .card-body ul {
+      list-style: none;
+      margin-top: 0.4rem;
+      padding-left: 0;
+    }
+
+    .card-body li {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .card-bullet {
+      font-size: 0.9rem;
+      color: var(--accent-strong);
+      margin-top: 0.08rem;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .card-link {
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    /* CONTACT FORM */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr);
+      gap: 1rem;
+    }
+
+    @media (min-width: 880px) {
+      .contact-layout {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      }
+    }
+
+    .contact-form-card {
+      border-radius: var(--radius-xl);
+      background: var(--bg-soft);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 1.1rem 1.1rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .field {
+      position: relative;
+      margin-bottom: 0.9rem;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 0.9rem 0.9rem 0.4rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text);
+      outline: none;
+      font-size: 0.82rem;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast), background 140ms ease-out;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 90px;
+      max-height: 200px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.7), 0 16px 30px rgba(15, 23, 42, 0.9);
+      transform: translateY(-1px);
+      background: #020617;
+    }
+
+    .field-label {
+      position: absolute;
+      left: 0.9rem;
+      top: 0.8rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      pointer-events: none;
+      transition: transform 160ms ease, font-size 160ms ease, top 160ms ease, color 160ms ease;
+      background: transparent;
+    }
+
+    .field input:focus + .field-label,
+    .field textarea:focus + .field-label,
+    .field input:not(:placeholder-shown) + .field-label,
+    .field textarea:not(:placeholder-shown) + .field-label {
+      top: 0.45rem;
+      font-size: 0.68rem;
+      transform: translateY(-4px);
+      color: var(--accent);
+    }
+
+    .contact-side {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.3), transparent 65%),
+                  linear-gradient(135deg, #020617, #020617 60%, #020617 100%);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 1.1rem 1.1rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.82rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.3);
+    }
+
+    .contact-label {
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    .contact-value {
+      font-size: 0.8rem;
+      text-align: right;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .chip-link {
+      font-size: 0.76rem;
+      border-radius: 999px;
+      padding: 0.3rem 0.65rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed rgba(148, 163, 184, 0.35);
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    /* BACK TO TOP */
+    .back-to-top {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.4rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.98);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+      z-index: 30;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.9);
+      border-color: var(--accent);
+    }
+
+    /* REVEAL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 400ms ease-out, transform 400ms ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        padding-inline: 1rem;
+      }
+      .page {
+        padding-inline: 1rem;
+      }
+      .hero-left {
+        padding: 1.3rem 1.2rem 1.2rem;
+      }
+      .hero-card {
+        padding: 1.1rem 1.1rem 1.2rem;
+      }
+      .card,
+      .contact-form-card,
+      .contact-side {
+        padding: 1rem 1rem 1.05rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blur-orbit"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-avatar">
+          <div class="brand-avatar-inner">MS</div>
+        </div>
+        <div class="brand-meta">
+          <div class="brand-name">Mohammad Sadab</div>
+          <div class="brand-tagline">Full-Stack Developer · React &amp; .NET Core</div>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          <span>
+            Hire me
+            <span class="btn-icon">💼</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page">
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="about">
+        <div class="hero-left reveal">
+          <div class="hero-pill">
+            <div class="hero-pill-dot"></div>
+            Available for full-time roles · Open to remote
+          </div>
+          <h1 class="hero-title">
+            Building <span>clean, scalable</span> web apps with React &amp; .NET Core.
+          </h1>
+          <p class="hero-subtitle">
+            Full-Stack Developer with hands-on experience in React.js, .NET Core, SignalR, Tailwind CSS,
+            and MySQL. I enjoy crafting responsive UIs, robust APIs, and real-time features that actually
+            solve problems for users.
+          </p>
+
+          <div class="hero-meta">
+            <span class="meta-pill">1+ years full-stack training &amp; project work</span>
+            <span class="meta-pill">Mau, Uttar Pradesh · India</span>
+            <span class="meta-pill">React.js · .NET Core · MySQL</span>
+          </div>
+
+          <div class="hero-cta-row">
+            <button class="btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+              <span>
+                View projects
+                <span class="btn-icon">🚀</span>
+              </span>
+            </button>
+
+            <a href="#" class="btn btn-outline" title="Add your resume link here">
+              <span>
+                Download CV
+                <span class="btn-icon">⬇️</span>
+              </span>
+            </a>
+          </div>
+
+          <div class="hero-footnote">
+            <span class="hero-footnote-dot"></span>
+            <span>Previously built healthcare &amp; e-learning platforms in agile teams.</span>
+          </div>
+        </div>
+
+        <aside class="hero-right reveal">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div class="hero-card-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span>Snapshot</span>
+            </div>
+
+            <div class="hero-grid">
+              <div class="mini-card">
+                <span class="mini-label">Current Role</span>
+                <span class="mini-value">Full-Stack Developer · Cubicle Eight</span>
+                <div class="mini-tag-row">
+                  <span class="mini-tag">July 2025 - Present</span>
+                  <span class="mini-tag">Jaunpur · UP</span>
+                </div>
+              </div>
+              <div class="mini-card">
+                <span class="mini-label">Core Stack</span>
+                <span class="mini-value">React.js · .NET Core · MySQL</span>
+                <div class="mini-tag-row">
+                  <span class="mini-tag">SignalR</span>
+                  <span class="mini-tag">Tailwind CSS</span>
+                </div>
+              </div>
+              <div class="mini-card">
+                <span class="mini-label">Education</span>
+                <span class="mini-value">B.Sc · VBSPU, Jaunpur</span>
+                <div class="mini-tag-row">
+                  <span class="mini-tag">2019 - 2022</span>
+                </div>
+              </div>
+              <div class="mini-card">
+                <span class="mini-label">Focus Areas</span>
+                <span class="mini-value">Web APIs · Real-time UIs</span>
+                <div class="mini-tag-row">
+                  <span class="mini-tag">RESTful Design</span>
+                  <span class="mini-tag">Performance</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-badge-stack">
+              <span class="hero-badge">SignalR real-time queues</span>
+              <span class="hero-badge">OPD workflows · Doctora App</span>
+              <span class="hero-badge">AcademyGo e-learning APIs</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="reveal">
+        <div class="section-header">
+          <h2 class="section-title">Skills &amp; Stack</h2>
+          <p class="section-subtitle">
+            Technologies I use regularly in production &amp; training projects.
+          </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.9rem;">
+          <div class="card" style="box-shadow:none;">
+            <div class="card-title" style="margin-bottom:0.5rem;">Frontend</div>
+            <div class="pill-row">
+              <span class="pill"><span class="pill-badge"></span>React.js</span>
+              <span class="pill"><span class="pill-badge"></span>JavaScript (ES6+)</span>
+              <span class="pill"><span class="pill-badge"></span>HTML5</span>
+              <span class="pill"><span class="pill-badge"></span>CSS3</span>
+              <span class="pill"><span class="pill-badge"></span>Tailwind CSS</span>
+              <span class="pill"><span class="pill-badge"></span>Bootstrap</span>
+            </div>
+          </div>
+
+          <div class="card" style="box-shadow:none;">
+            <div class="card-title" style="margin-bottom:0.5rem;">Backend</div>
+            <div class="pill-row">
+              <span class="pill"><span class="pill-badge"></span>.NET Core (C#)</span>
+              <span class="pill"><span class="pill-badge"></span>RESTful APIs</span>
+              <span class="pill"><span class="pill-badge"></span>Authentication &amp; CRUD</span>
+              <span class="pill"><span class="pill-badge"></span>SignalR (real-time)</span>
+            </div>
+          </div>
+
+          <div class="card" style="box-shadow:none;">
+            <div class="card-title" style="margin-bottom:0.5rem;">Database &amp; Tools</div>
+            <div class="pill-row">
+              <span class="pill"><span class="pill-badge"></span>MySQL</span>
+              <span class="pill"><span class="pill-badge"></span>Postman</span>
+              <span class="pill"><span class="pill-badge"></span>Azure DevOps</span>
+              <span class="pill"><span class="pill-badge"></span>Git &amp; GitHub</span>
+              <span class="pill"><span class="pill-badge"></span>VS Code · Visual Studio</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="reveal">
+        <div class="section-header">
+          <h2 class="section-title">Experience</h2>
+          <p class="section-subtitle">
+            Real-world projects delivered in agile teams with measurable impact.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-header-row">
+              <div>
+                <div class="card-title">Full-Stack Developer</div>
+                <div class="card-subtitle">Cubicle Eight · July 2025 – Present</div>
+              </div>
+              <span class="card-tag">Full-time</span>
+            </div>
+            <div class="card-body">
+              <p>
+                Building web applications using React.js, .NET Core, and MySQL for healthcare and other domains.
+                Focused on clean APIs, real-time collaboration, and responsive UX.
+              </p>
+              <ul>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Developing and maintaining RESTful APIs and front-end modules for production apps.</span>
+                </li>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Implementing SignalR-based real-time features to improve system visibility and user experience.</span>
+                </li>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Working in agile sprints with code reviews, Git-based workflows, and CI/CD pipelines.</span>
+                </li>
+              </ul>
+              <div class="card-footer">
+                <span>React.js · .NET Core · MySQL · SignalR</span>
+                <a href="#" class="card-link">Company site ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header-row">
+              <div>
+                <div class="card-title">Full-Stack Developer Training</div>
+                <div class="card-subtitle">Coders Academy · July 2024 – July 2025</div>
+              </div>
+              <span class="card-tag">Training</span>
+            </div>
+            <div class="card-body">
+              <p>
+                1-year intensive training covering full-stack development with React, .NET Core, REST APIs,
+                and responsive UI design.
+              </p>
+              <ul>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Built end-to-end projects with authentication, CRUD operations, and scalable architecture.</span>
+                </li>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Designed mobile-first interfaces using Tailwind CSS and Bootstrap.</span>
+                </li>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Used Azure DevOps for version control, boards, and CI/CD pipelines.</span>
+                </li>
+              </ul>
+              <div class="card-footer">
+                <span>Frontend &amp; Backend Tracks</span>
+                <a href="#" class="card-link">View certificate ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="reveal">
+        <div class="section-header">
+          <h2 class="section-title">Highlighted Projects</h2>
+          <p class="section-subtitle">
+            A mix of healthcare and e-learning platforms built as full-stack solutions.
+          </p>
+        </div>
+
+        <div class="card-grid card-grid--two">
+          <!-- Doctora App -->
+          <article class="card">
+            <div class="card-header-row">
+              <div>
+                <div class="card-title">Doctora App · OPD Platform</div>
+                <div class="card-subtitle">React.js · .NET Core · SignalR · MySQL</div>
+              </div>
+              <span class="card-tag">Healthcare</span>
+            </div>
+            <div class="card-body">
+              <p>
+                Full-stack OPD platform that streamlines doctor-patient interactions and clinic workflows
+                with real-time queue updates.
+              </p>
+              <ul>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Engineered an OPD system that reduced manual workflows by ~30% by digitizing check-ins and OPD queues.</span>
+                </li>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Implemented SignalR-based real-time updates for patient queues, boosting visibility and response time.</span>
+                </li>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Optimized REST APIs and MySQL queries, reducing average API latency by ~25%.</span>
+                </li>
+              </ul>
+              <div class="card-footer">
+                <span>Real-time · Role-based access</span>
+                <a href="#" class="card-link">View on GitHub (add link) ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- AcademyGo -->
+          <article class="card">
+            <div class="card-header-row">
+              <div>
+                <div class="card-title">AcademyGo · E-Learning Platform</div>
+                <div class="card-subtitle">.NET Core · C# · MySQL · Azure DevOps</div>
+              </div>
+              <span class="card-tag">E-Learning</span>
+            </div>
+            <div class="card-body">
+              <p>
+                Scalable backend for an e-learning platform with support for courses, batches, tests,
+                MCQs, and admin workflows.
+              </p>
+              <ul>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Designed RESTful APIs for courses, tests, user roles, and MCQ-based evaluations.</span>
+                </li>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Built endpoints for test creation, answer submission, and score calculation.</span>
+                </li>
+                <li>
+                  <span class="card-bullet">▹</span>
+                  <span>Used Azure DevOps for CI/CD pipelines and collaborative development.</span>
+                </li>
+              </ul>
+              <div class="card-footer">
+                <span>Modular architecture · Admin tools</span>
+                <a href="#" class="card-link">View on GitHub (add link) ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- GITHUB CARD ROW (OPTIONAL) -->
+      <section class="reveal">
+        <div class="section-header">
+          <h2 class="section-title">GitHub Snapshot</h2>
+          <p class="section-subtitle">
+            Quick links to repositories you want to highlight.
+          </p>
+        </div>
+        <div class="card-grid card-grid--two">
+          <article class="card" style="box-shadow:none;">
+            <div class="card-header-row">
+              <div>
+                <div class="card-title">react-doctora-dashboard</div>
+                <div class="card-subtitle">React · Tailwind · REST API integration</div>
+              </div>
+              <span class="card-tag">Frontend</span>
+            </div>
+            <div class="card-body">
+              <p>Modern dashboard UI for managing doctors, patients, and OPD slots.</p>
+              <div class="card-footer">
+                <span>Update this with real repo link</span>
+                <a href="#" class="card-link">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" style="box-shadow:none;">
+            <div class="card-header-row">
+              <div>
+                <div class="card-title">academygo-api</div>
+                <div class="card-subtitle">.NET Core · MySQL · Clean architecture</div>
+              </div>
+              <span class="card-tag">Backend</span>
+            </div>
+            <div class="card-body">
+              <p>API-only backend for courses, tests, MCQs, and admin tools.</p>
+              <div class="card-footer">
+                <span>Add your actual repo here</span>
+                <a href="#" class="card-link">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="reveal">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-subtitle">
+            Send a quick message or reach out on email / LinkedIn.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-form-card">
+            <form onsubmit="handleFormSubmit(event)">
+              <div class="field">
+                <input type="text" id="name" name="name" placeholder=" " required />
+                <label class="field-label" for="name">Your name</label>
+              </div>
+
+              <div class="field">
+                <input type="email" id="email" name="email" placeholder=" " required />
+                <label class="field-label" for="email">Email address</label>
+              </div>
+
+              <div class="field">
+                <input type="text" id="subject" name="subject" placeholder=" " />
+                <label class="field-label" for="subject">Subject (optional)</label>
+              </div>
+
+              <div class="field">
+                <textarea id="message" name="message" placeholder=" " required></textarea>
+                <label class="field-label" for="message">Your message</label>
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:0.8rem;margin-top:0.4rem;">
+                <button type="submit" class="btn">
+                  <span>
+                    Send message
+                    <span class="btn-icon">📨</span>
+                  </span>
+                </button>
+                <span id="form-status" style="font-size:0.72rem;color:var(--muted);"></span>
+              </div>
+            </form>
+          </div>
+
+          <aside class="contact-side">
+            <p>
+              I’m open to full-time roles, freelance projects, and collaborations on React / .NET Core
+              products—especially in healthcare, education, or SaaS.
+            </p>
+
+            <ul class="contact-list">
+              <li class="contact-item">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Mau, Uttar Pradesh, India</span>
+              </li>
+              <li class="contact-item">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value"><a href="tel:+919005954900">+91 90059 54900</a></span>
+              </li>
+              <li class="contact-item">
+                <span class="contact-label">Email</span>
+                <span class="contact-value"><a href="mailto:ansari426432@gmail.com">ansari426432@gmail.com</a></span>
+              </li>
+            </ul>
+
+            <div class="contact-links">
+              <a class="chip-link" href="#" target="_blank" rel="noreferrer">
+                🧑‍💻 GitHub
+              </a>
+              <a class="chip-link" href="#" target="_blank" rel="noreferrer">
+                💼 LinkedIn
+              </a>
+              <a class="chip-link" href="#" target="_blank" rel="noreferrer">
+                📄 Resume
+              </a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Mohammad Sadab. All rights reserved.</span>
+      <span>Built with HTML, CSS &amp; JavaScript · Deployed on GitHub Pages</span>
+    </footer>
+  </div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    ↑
+  </button>
+
+  <script>
+    // Animated button ripple (using CSS radial via custom props)
+    document.querySelectorAll(".btn").forEach((btn) => {
+      btn.addEventListener("pointermove", (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        btn.style.setProperty("--mouse-x", x + "%");
+        btn.style.setProperty("--mouse-y", y + "%");
+      });
+    });
+
+    // Intersection Observer – section reveal
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+
+    // Back to top visibility
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 320) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
+    });
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Contact form (demo only)
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const status = document.getElementById("form-status");
+      status.textContent = "Thanks! This demo form doesn't send yet—wire it to your backend or service.";
+      setTimeout(() => {
+        status.textContent = "";
+      }, 5000);
+      e.target.reset();
+    }
+
+    // Current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
